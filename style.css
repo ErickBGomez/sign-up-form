@@ -10,25 +10,22 @@ h1 {
 
 .main-container {
     display: flex;
-    width: 100vw;
     height: 100vh;
 }
 
 .image-slideshow-container {
     position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 40%;
-    height: 100%;
-}
-
-.image-slideshow-container div {
-    width: 100%;
 }
 
 .image-slideshow {
     position: absolute;
     background-color: #42a8a8;
+    width: 100%;
     height: 100%;
     z-index: -1;
 }
@@ -41,6 +38,7 @@ h1 {
     align-items: center;
     background-color: #35353591;
     padding: 55px 0;
+    width: 100%;
 }
 
 .social-title {
@@ -55,8 +53,27 @@ h1 {
     fill: white;
 }
 
+.image-slideshow-indicator-container {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.image-slideshow-indicator {
+    background-color: rgba(245, 245, 245, 0.411);
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+}
+
+.image-slideshow-indicator.selected {
+    background-color: white;
+}
+
 .sign-up-container {
     background-color: #915454;
     width: 60%;
-    height: 100%;
 }
