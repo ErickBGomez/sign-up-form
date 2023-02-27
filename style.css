@@ -12,7 +12,8 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-h1 {
+h1,
+p {
     margin: 0;
 }
 
@@ -20,6 +21,8 @@ h1 {
     display: flex;
     height: 100vh;
 }
+
+/* Slideshow area */
 
 .image-slideshow-container {
     position: relative;
@@ -83,7 +86,8 @@ h1 {
     background-color: var(--slideshow-white);
 }
 
+/* Sign up area */
+
 .sign-up-container {
-    background-color: #915454;
     width: 60%;
 }
