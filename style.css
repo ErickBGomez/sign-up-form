@@ -8,6 +8,11 @@
 
 :root.light {
     --sign-up-container-background: #ededed;
+    --main-form-background: #f2f2f2;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -108,4 +113,13 @@ p {
 
 .sign-up-text > p:not(:last-child) {
     margin-bottom: 30px;
+}
+
+.main-form-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 20px 75px;
+    background-color: var(--main-form-background);
 }
