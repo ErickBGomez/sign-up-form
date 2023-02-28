@@ -7,8 +7,9 @@
 }
 
 :root.light {
-    --sign-up-container-background: #ebebeb;
-    --main-form-background: #f5f5f5;
+    --sign-up-background: #ebebeb;
+    --form-background: #f5f5f5;
+    --form-shadow: #57575726;
 }
 
 * {
@@ -105,7 +106,7 @@ p {
 
 .sign-up-container {
     width: 60%;
-    background-color: var(--sign-up-container-background);
+    background-color: var(--sign-up-background);
 }
 
 .sign-up-text {
@@ -121,7 +122,7 @@ p {
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
 
-    padding: 20px 75px;
-    background-color: var(--main-form-background);
-    box-shadow: 0px 0px 18px 13px rgba(87, 87, 87, 0.2);
+    padding: 60px 75px;
+    background-color: var(--form-background);
+    box-shadow: 0px 0px 18px 13px var(--form-shadow);
 }
