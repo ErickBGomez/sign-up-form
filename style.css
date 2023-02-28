@@ -194,7 +194,8 @@ footer {
     position: absolute;
     bottom: 0px;
     
-    background-color: var(--form-background);
+    background-color: var(--text-color);
+    color: var(--form-background);
     width: 100%;
     text-align: center;
     padding: 10px;
