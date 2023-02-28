@@ -6,6 +6,10 @@
     --slideshow-gradient-background: linear-gradient(135deg, #65dae7, #2463cf);
 }
 
+:root.light {
+    --sign-up-container-background: #ededed;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -15,6 +19,11 @@ body {
 h1,
 p {
     margin: 0;
+}
+
+p {
+    font-weight: 300;
+    font-size: 25px;
 }
 
 .main-container {
@@ -90,4 +99,13 @@ p {
 
 .sign-up-container {
     width: 60%;
+    background-color: var(--sign-up-container-background);
+}
+
+.sign-up-text {
+    margin: 80px 75px;
+}
+
+.sign-up-text > p:not(:last-child) {
+    margin-bottom: 30px;
 }
