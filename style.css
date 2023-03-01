@@ -5,7 +5,7 @@
     --slideshow-social-background-black: #35353591;
     --slideshow-gradient-background: linear-gradient(135deg, #65dae7, #2463cf);
 
-    --image-slideshow-area: 40%;
+    --image-slideshow-area: 35%;
     --sign-up-area: calc(100% - var(--image-slideshow-area));
 }
 
@@ -120,8 +120,8 @@ footer {
 }
 
 .sign-up-container > * {
-    padding-right: 75px;
-    padding-left: 75px;
+    padding-right: 120px;
+    padding-left: 120px;
 }
 
 .upper-area {
@@ -138,7 +138,7 @@ footer {
 #main-form {
     background-color: var(--form-background);
     box-shadow: 0px 0px 30px 13px var(--form-shadow);
-    padding: 60px inherit;
+    padding: 75px auto;
 }
 
 .inputs-section {
@@ -148,6 +148,7 @@ footer {
     grid-gap: 45px 75px;
     padding-top: 60px;
     padding-bottom: 60px;
+    max-width: 775px;
 }
 
 .input-container {
