@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="sign-up-container">
-            <div class="sign-up-text">
+            <div class="sign-up-text page-margin">
                 <p>
                     This is not a real social network! This is just a mock up for showing my UX/UI design skill and knowledge.
                 </p>
@@ -34,8 +34,8 @@
                 </p>
             </div>
 
-            <form method="post">
-                <div class="main-form-container">
+            <form id="main-form" method="post">
+                <div class="inputs-section">
                     <div class="input-container">
                         <label for="first-name">First name</label>
                         <input type="text" name="first-name" id="first-name">
@@ -61,12 +61,12 @@
                         <input type="password" name="password2" id="password2">
                     </div>
                 </div>
-
-                <div class="submit-area">
-                    <button type="submit">Create account</button>
-                    <p class="log-in-text">Already have an account? <a href="#" class="log-in-link">Log in</a></p>
-                </div>
             </form>
+
+            <div class="submit-area page-margin">
+                <button type="submit" class="create-account-button">Create account</button>
+                <p class="log-in-text">Already have an account? <a href="#" class="log-in-link">Log in</a></p>
+            </div>
 
             <footer>
                 Project made by: <a class="footer-link" href="https://github.com/ErickBGomez" target="_blank">Erick B. Gómez</a>

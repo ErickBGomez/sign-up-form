@@ -108,7 +108,13 @@ footer {
 
 /* Sign up area */
 
+.page-margin {
+    margin: 0 75px;
+}
+
 .sign-up-container {
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
     position: relative;
     width: 60%;
     background-color: var(--sign-up-background);
@@ -118,22 +124,25 @@ footer {
     font-weight: 300;
     font-size: 25px;
 
-    margin: 80px 75px;
+    margin-top: 60px;
 }
 
 .sign-up-text > p:not(:last-child) {
     margin-bottom: 30px;
 }
 
-.main-form-container {
+#main-form {
+    background-color: var(--form-background);
+    box-shadow: 0px 0px 30px 13px var(--form-shadow);
+}
+
+.inputs-section {
     display: grid;
     grid-template-rows: repeat(3, auto);
     grid-template-columns: repeat(2, 1fr);
     gap: 45px 75px;
 
     padding: 60px 75px;
-    background-color: var(--form-background);
-    box-shadow: 0px 0px 30px 13px var(--form-shadow);
 }
 
 .input-container {
@@ -157,11 +166,10 @@ footer {
 }
 
 .submit-area {
-    margin-top: 50px;
-    margin-left: 75px;
+    margin-top: 60px;
 }
 
-button[type="submit"] {
+.create-account-button {
     margin-bottom: 25px;
     font-size: 25px;
     font-weight: 600;
