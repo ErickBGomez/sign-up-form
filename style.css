@@ -186,6 +186,18 @@ footer {
     border-radius: 10px;
     padding: 20px 60px;
     box-shadow: 0px 0px 15px 10px var(--form-shadow);
+
+    cursor: pointer;
+    transition: scale 100ms;
+}
+
+.create-account-button:hover {
+    scale: 1.03;
+    transition: scale 100ms;
+}
+
+.create-account-button:active {
+    filter: brightness(85%);
 }
 
 .log-in-text {
