@@ -4,6 +4,9 @@
     --slideshow-indicator-unselected-white: #f5f5f569;
     --slideshow-social-background-black: #35353591;
     --slideshow-gradient-background: linear-gradient(135deg, #65dae7, #2463cf);
+
+    --image-slideshow-area: 40%;
+    --sign-up-area: calc(100% - var(--image-slideshow-area));
 }
 
 :root.light {
@@ -49,7 +52,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: var(--image-slideshow-area);
     z-index: 1;
 }
 
@@ -108,41 +111,43 @@ footer {
 
 /* Sign up area */
 
-.page-margin {
-    margin: 0 75px;
-}
-
 .sign-up-container {
     display: grid;
     grid-template-rows: 1fr auto 1fr;
     position: relative;
-    width: 60%;
+    width: var(--sign-up-area);
     background-color: var(--sign-up-background);
 }
 
-.sign-up-text {
-    font-weight: 300;
-    font-size: 25px;
-
-    margin-top: 60px;
+.sign-up-container > * {
+    padding-right: 75px;
+    padding-left: 75px;
 }
 
-.sign-up-text > p:not(:last-child) {
+.upper-area {
+    font-weight: 300;
+    font-size: 25px;
+    align-self: end;
+    margin-bottom: 45px;
+}
+
+.upper-area > p:not(:last-child) {
     margin-bottom: 30px;
 }
 
 #main-form {
     background-color: var(--form-background);
     box-shadow: 0px 0px 30px 13px var(--form-shadow);
+    padding: 60px inherit;
 }
 
 .inputs-section {
     display: grid;
     grid-template-rows: repeat(3, auto);
     grid-template-columns: repeat(2, 1fr);
-    gap: 45px 75px;
-
-    padding: 60px 75px;
+    grid-gap: 45px 75px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .input-container {
@@ -161,12 +166,13 @@ footer {
     
     font-size: 20px;
     border: 1.5px solid var(--input-color);
+    background-color: var(--form-background);
     padding: 35px 15px 12px 15px;
     border-radius: 7px;
 }
 
-.submit-area {
-    margin-top: 60px;
+.lower-area {
+    margin-top: 45px;
 }
 
 .create-account-button {
