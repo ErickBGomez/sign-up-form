@@ -213,7 +213,7 @@ input + .info-validation {
     filter: brightness(85%);
 }
 
-.terms-and-service {
+.terms-of-service {
     display: block;
     font-size: 0.75rem;
     color: var(--terms-and-service-text);
