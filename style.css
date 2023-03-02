@@ -21,7 +21,7 @@
     --form-shadow: #5757573a;
     --input-color: #969696;
     --blue-accent: #3886df;
-    --blue-focus-accent: #2e53a5;
+    --blue-focus-accent: #2066cf;
     --red-accent: #cc4545;
     --terms-and-service-text: #797979;
 }
@@ -209,18 +209,6 @@ input + .info-validation {
     transition: 100ms;
 }
 
-button:focus {
-    outline: 2px solid var(--blue-focus-accent);
-    box-shadow: 0 0 15px 0px var(--blue-accent);
-}
-
-a:focus {
-    outline: 1px solid var(--blue-accent);
-    border: 1px solid none;
-    border-radius: 2px;
-    box-shadow: 0 0 10px var(--blue-accent);
-}
-
 input:focus {
     outline: none;
 
@@ -260,7 +248,12 @@ input:focus + label {
 }
 
 .create-account-button:active {
-    filter: brightness(85%);
+    background-color: var(--blue-focus-accent);
+}
+
+.create-account-button:focus {
+    outline: 2px solid var(--form-background);
+    box-shadow: 0 0 15px 0px var(--blue-accent);
 }
 
 .terms-of-service {
@@ -283,6 +276,13 @@ a:link,
 a:visited {
     color: var(--blue-accent);
     text-decoration: none;
+}
+
+a:focus {
+    outline: 1px solid var(--blue-accent);
+    border: 1px solid none;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--blue-accent);
 }
 
 .footer-link:link,
