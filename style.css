@@ -5,11 +5,14 @@
     --slideshow-social-background-black: #35353591;
     --slideshow-gradient-background: linear-gradient(135deg, #65dae7, #2463cf);
 
+    /* Global variables */
     --image-slideshow-area: 35%;
     --sign-up-area: calc(100% - var(--image-slideshow-area));
 
     font-size: 16px;
 }
+
+/* Colors for light mode */
 
 :root.light {
     --text-color: #262626;
@@ -18,8 +21,11 @@
     --form-shadow: #5757573a;
     --input-color: #969696;
     --blue-accent: #3886df;
+    --red-accent: #cc4545;
     --terms-and-service-text: #797979;
 }
+
+/* General styles */
 
 * {
     box-sizing: border-box;
@@ -127,6 +133,8 @@ footer {
     padding-left: 90px;
 }
 
+/* Upper area */
+
 .upper-area {
     font-weight: 300;
     font-size: 1.3rem;
@@ -137,6 +145,8 @@ footer {
 .upper-area > p:not(:last-child) {
     margin-bottom: 30px;
 }
+
+/* Form area */
 
 #main-form {
     background-color: var(--form-background);
@@ -183,7 +193,10 @@ input + .info-validation {
     margin-top: 7px;
     margin-left: 5px;
     margin-right: 5px;
+    color: var(--red-accent);
 }
+
+/* Lower and footer */
 
 .lower-area {
     margin-top: 45px;
