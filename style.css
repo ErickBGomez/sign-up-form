@@ -179,12 +179,15 @@ footer {
 }
 
 .input-container > label {
-    font-size: 0.75rem;
     position: absolute;
     left: 15px;
-    top: 9px;
+    top: calc(50% - 0.5rem);
+    font-size: 1rem;
     color: var(--input-color);
     font-weight: 400;
+    cursor: text;
+
+    transition: 100ms;
 }
 
 .input-container > input {
@@ -220,12 +223,17 @@ input:invalid {
     border: 1.5px solid var(--red-accent);
 }
 
-input:valid + .info-validation {
+input:valid ~ .info-validation {
     display: none;
 }
 
-input:invalid + .info-validation {
+input:invalid ~ .info-validation {
     display: block;
+}
+
+input:focus ~ label {
+    font-size: 0.75rem;
+    top: 9px;
 }
 /* Lower and footer */
 
