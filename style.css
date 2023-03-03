@@ -98,6 +98,7 @@ footer {
     text-align: center;
     color: var(--slideshow-white);
     font-size: 4.5rem;
+    user-select: none;
 }
 
 .social-icon {
@@ -186,6 +187,7 @@ footer {
     color: var(--input-color);
     font-weight: 400;
     cursor: text;
+    user-select: none;
 
     transition: 100ms;
 }
