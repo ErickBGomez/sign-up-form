@@ -179,7 +179,8 @@ footer {
     position: relative;
 }
 
-.input-container > label {
+.input-container > label,
+input:placeholder-shown + label {
     position: absolute;
     left: 15px;
     top: calc(50% - 0.5rem);
@@ -221,9 +222,13 @@ input:focus {
     border: 1.5px solid var(--blue-accent);
 }
 
-input:focus + label {
+input:focus + label,
+input:not(:placeholder-shown) + label {
     font-size: 0.75rem;
     top: 9px;
+}
+
+input:focus + label {
     color: var(--blue-accent);
 }
 
