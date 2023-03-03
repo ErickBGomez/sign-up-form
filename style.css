@@ -221,22 +221,29 @@ input:focus {
     border: 1.5px solid var(--blue-accent);
 }
 
-input:invalid {
-    border: 1.5px solid var(--red-accent);
+input:focus + label {
+    font-size: 0.75rem;
+    top: 9px;
+    color: var(--blue-accent);
 }
 
 input:valid ~ .info-validation {
     display: none;
 }
 
+input:invalid {
+    border: 1.5px solid var(--red-accent);
+}
+
+input:invalid + label {
+    color: var(--red-accent);
+}
+
 input:invalid ~ .info-validation {
     display: block;
 }
 
-input:focus ~ label {
-    font-size: 0.75rem;
-    top: 9px;
-}
+
 /* Lower and footer */
 
 .lower-area {
