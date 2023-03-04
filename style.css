@@ -197,6 +197,7 @@ input:placeholder-shown + label {
 .input-container > input {
     width: 100%;
     
+    position: relative;
     color: var(--text-color);
     font-size: 1rem;
     border: 1.5px solid var(--input-color);
@@ -215,7 +216,11 @@ input:placeholder-shown + label {
     color: var(--invalid-accent);
 }
 
-/* Input status */
+
+
+/* Input status: */
+
+/* Focus */
 
 input:focus {
     outline: none;
@@ -233,6 +238,8 @@ input:focus + label {
     color: var(--blue-accent);
 }
 
+/* Valid value */
+
 input[data-valueState="valid"] {
     border-color: var(--valid-accent);
 }
@@ -240,6 +247,14 @@ input[data-valueState="valid"] {
 input[data-valueState="valid"] + label {
     color: var(--valid-accent);
 }
+
+input[data-valueState="valid"]::after {
+    position: absolute;
+    content: "✅️";
+    left: 30px;
+}
+
+/* Invalid value */
 
 input[data-valueState="invalid"] {
     border-color: var(--invalid-accent);
