@@ -22,7 +22,8 @@
     --input-color: #969696;
     --blue-accent: #3886df;
     --blue-focus-accent: #2066cf;
-    --red-accent: #cc4545;
+    --invalid-accent: #cc4545;
+    --valid-accent: #29ac6a;
     --terms-and-service-text: #797979;
 }
 
@@ -206,12 +207,12 @@ input:placeholder-shown + label {
 
 .info-validation {
     position: absolute;
-
+    display: none;
     font-size: 0.75rem;
     margin-top: 7px;
     margin-left: 5px;
     margin-right: 5px;
-    color: var(--red-accent);
+    color: var(--invalid-accent);
 }
 
 /* Input status */
@@ -232,19 +233,23 @@ input:focus + label {
     color: var(--blue-accent);
 }
 
-input:valid ~ .info-validation {
-    display: none;
+input[data-valueState="valid"] {
+    border-color: var(--valid-accent);
 }
 
-input:invalid {
-    border: 1.5px solid var(--red-accent);
+input[data-valueState="valid"] + label {
+    color: var(--valid-accent);
 }
 
-input:invalid + label {
-    color: var(--red-accent);
+input[data-valueState="invalid"] {
+    border-color: var(--invalid-accent);
 }
 
-input:invalid ~ .info-validation {
+input[data-valueState="invalid"] + label {
+    color: var(--invalid-accent);
+}
+
+input[data-valueState="invalid"] ~ .info-validation {
     display: block;
 }
 
