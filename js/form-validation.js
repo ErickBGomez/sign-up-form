@@ -1,9 +1,3 @@
-const root = document.documentElement;
-
-// Light and Dark mode
-root.className = "light";
-
-// Client-side form Validation
 const inputs = document.querySelectorAll("input");
 
 
