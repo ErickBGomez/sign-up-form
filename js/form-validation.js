@@ -15,7 +15,7 @@ const form = document.querySelector("#main-form");
 function displayError(inputElement, errorMessage) {
     setValueState(inputElement, "invalid");
 
-    const validationSpan = inputElement.nextElementSibling.nextElementSibling;
+    const validationSpan = inputElement.parentElement.querySelector(".info-validation");
     validationSpan.innerText = "* " + errorMessage;
 };
 
