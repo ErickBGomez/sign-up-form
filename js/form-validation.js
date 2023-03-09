@@ -21,6 +21,7 @@ const phoneRegex = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(
 // Password Regex credits: https://regexr.com/3bfsi
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
+const validationDelay = 750;
 
 // Functions
 function setInvalidInput(inputElement, errorMessage = "") {
@@ -44,18 +45,23 @@ function setValueState(inputElement, newValue) {
 // Validations
 
 function validateInputValue(inputElement, regexPattern, patternErrorMessage = "Not a valid value") {
-    // Empty inputs (All elements)
-    if (inputElement.value.length == 0) {
-        setInvalidInput(inputElement, "Field cannot be empty");
-    }
-    // Regex pattern (Names, Email, Phone, Password1)
-    else if (!checkRegexPattern(inputElement.value, regexPattern)) {
-        setInvalidInput(inputElement, patternErrorMessage);
-    }
-    // No errors found:
-    else {
-        setValidInput(inputElement);
-    }
+    const delayedValidations = () => {
+        // Empty inputs
+        if (inputElement.value.length == 0) {
+            setInvalidInput(inputElement, "Field cannot be empty");
+        }
+        // Regex pattern
+        else if (!checkRegexPattern(inputElement.value, regexPattern)) {
+            setInvalidInput(inputElement, patternErrorMessage);
+        }
+        // No errors found:
+        else {
+            setValidInput(inputElement);
+        }
+    };
+    
+    clearTimeout(delayedValidations);
+    setTimeout(delayedValidations, validationDelay);
 }
 
 function checkRegexPattern(inputValue, regexPattern) {
@@ -64,12 +70,19 @@ function checkRegexPattern(inputValue, regexPattern) {
 }
 
 function confirmPassword() {
-    if (!(confirmPasswordInput.value === passwordInput.value)) {
-        setInvalidInput(confirmPasswordInput);
-        setInvalidInput(passwordInput, "Passwords don't match");
-    } else {
-        setValidInput(confirmPasswordInput);
-    }
+    const delayedConfirm = () => {
+        if (confirmPasswordInput.value == 0) {
+            setInvalidInput(confirmPasswordInput, "Field cannot be empty");
+        } else if (!(confirmPasswordInput.value === passwordInput.value)) {
+            setInvalidInput(confirmPasswordInput);
+            setInvalidInput(passwordInput, "Passwords don't match");
+        } else {
+            setValidInput(confirmPasswordInput);
+        }
+    };
+
+    clearTimeout(delayedConfirm);
+    setTimeout(delayedConfirm, validationDelay);
 }
 
 
@@ -80,11 +93,13 @@ form.addEventListener("submit", e => {
 
 
 
-firstNameInput.addEventListener("change", e => validateInputValue(e.target, nameRegex, "Not a valid name"));
-lastNameInput.addEventListener("change", e => validateInputValue(e.target, nameRegex, "Not a valid last name"));
+firstNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid name"));
+lastNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid last name"));
 
-emailInput.addEventListener("change", e => validateInputValue(e.target, emailRegex, "Not a valid email"));
-phoneNumberInput.addEventListener("change", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number"));
+emailInput.addEventListener("input", e => validateInputValue(e.target, emailRegex, "Not a valid email"));
+phoneNumberInput.addEventListener("input", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number"));
 
-passwordInput.addEventListener("change", e => validateInputValue(e.target, passwordRegex, "Not a strong password"));
-confirmPasswordInput.addEventListener("change", confirmPassword);
+passwordInput.addEventListener("input", e => validateInputValue(e.target, passwordRegex, "Not a strong password"));
+confirmPasswordInput.addEventListener("input", confirmPassword);
+
+inputs.forEach(input => input.addEventListener("input", e => setValueState(e.target, "none")));
