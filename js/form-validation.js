@@ -31,25 +31,35 @@ function setValueState(inputElement, newValue) {
 }
 
 // Validations
-// 1. Generic Input
-function validateGenericInput(inputElement) {
-    if (inputElement.value.length == 0) {
-        setInvalidInput(inputElement, "Field cannot be empty");
-    }
-}
 
-// 2. Name Input
+// 1. Name Input
 function validateNameInput(inputElement) {
-    if (!checkNamePattern(inputElement.value)) {
+    if (!checkRegexPattern(inputElement.value, /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/)) {
         setInvalidInput(inputElement, "Not a valid name");
     } else {
         setValidInput(inputElement);
     }
 }
 
-function checkNamePattern(value) {
-    const regex = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
-    return regex.test(value);
+// 2. Email Input
+function validateEmailInput(inputElement) {
+    if (!checkRegexPattern(inputElement.value, /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+        setInvalidInput(inputElement, "Not a valid email address");
+    } else {
+        setValidInput(inputElement);
+    }
+}
+
+function checkRegexPattern(inputValue, regexPattern) {
+    const regex = regexPattern;
+    return regex.test(inputValue);
+}
+
+// 3. Generic Input
+function validateGenericInput(inputElement) {
+    if (inputElement.value.length == 0) {
+        setInvalidInput(inputElement, "Field cannot be empty");
+    }
 }
 
 
@@ -60,13 +70,10 @@ form.addEventListener("submit", e => {
 
 
 
-firstNameInput.addEventListener("change", e => {
-    validateNameInput(e.target);
-});
+firstNameInput.addEventListener("change", e => validateNameInput(e.target));
+lastNameInput.addEventListener("change", e => validateNameInput(e.target));
 
-lastNameInput.addEventListener("change", e=> {
-    validateNameInput(e.target);
-});
+emailInput.addEventListener("change", e => validateEmailInput(e.target));
 
 inputs.forEach(input => {
     input.addEventListener("change", e => {
