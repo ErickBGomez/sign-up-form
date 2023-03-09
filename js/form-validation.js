@@ -43,14 +43,14 @@ function setValueState(inputElement, newValue) {
 
 // Validations
 
-function validateInputValue(inputElement, regexPattern) {
+function validateInputValue(inputElement, regexPattern, patternErrorMessage = "Not a valid value") {
     // Empty inputs (All elements)
     if (inputElement.value.length == 0) {
         setInvalidInput(inputElement, "Field cannot be empty");
     }
     // Regex pattern (Names, Email, Phone, Password1)
     else if (!checkRegexPattern(inputElement.value, regexPattern)) {
-        setInvalidInput(inputElement, "Not a valid value");
+        setInvalidInput(inputElement, patternErrorMessage);
     }
     // No errors found:
     else {
@@ -80,11 +80,11 @@ form.addEventListener("submit", e => {
 
 
 
-firstNameInput.addEventListener("change", e => validateInputValue(e.target, nameRegex));
-lastNameInput.addEventListener("change", e => validateInputValue(e.target, nameRegex));
+firstNameInput.addEventListener("change", e => validateInputValue(e.target, nameRegex, "Not a valid name"));
+lastNameInput.addEventListener("change", e => validateInputValue(e.target, nameRegex, "Not a valid last name"));
 
-emailInput.addEventListener("change", e => validateInputValue(e.target, emailRegex));
-phoneNumberInput.addEventListener("change", e => validateInputValue(e.target, phoneRegex));
+emailInput.addEventListener("change", e => validateInputValue(e.target, emailRegex, "Not a valid email"));
+phoneNumberInput.addEventListener("change", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number"));
 
-passwordInput.addEventListener("change", e => validateInputValue(e.target, passwordRegex));
+passwordInput.addEventListener("change", e => validateInputValue(e.target, passwordRegex, "Not a strong password"));
 confirmPasswordInput.addEventListener("change", confirmPassword);
