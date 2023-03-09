@@ -18,15 +18,16 @@ const nameRegex = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
 const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 // Phone Regex credits: https://regexr.com/37juu
 const phoneRegex = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/;
-
+// Password Regex credits: https://regexr.com/3bfsi
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
 
 // Functions
-function setInvalidInput(inputElement, errorMessage) {
+function setInvalidInput(inputElement, errorMessage = "") {
     setValueState(inputElement, "invalid");
 
     const validationSpan = inputElement.parentElement.querySelector(".info-validation");
-    validationSpan.innerText = "* " + errorMessage;
+    validationSpan.innerText = errorMessage;
 };
 
 function setValidInput(inputElement) {
@@ -43,11 +44,16 @@ function setValueState(inputElement, newValue) {
 // Validations
 
 function validateInputValue(inputElement, regexPattern) {
+    // Empty inputs (All elements)
     if (inputElement.value.length == 0) {
         setInvalidInput(inputElement, "Field cannot be empty");
-    } else if (!checkRegexPattern(inputElement.value, regexPattern)) {
+    }
+    // Regex pattern (Names, Email, Phone, Password1)
+    else if (!checkRegexPattern(inputElement.value, regexPattern)) {
         setInvalidInput(inputElement, "Not a valid value");
-    } else {
+    }
+    // No errors found:
+    else {
         setValidInput(inputElement);
     }
 }
@@ -55,6 +61,15 @@ function validateInputValue(inputElement, regexPattern) {
 function checkRegexPattern(inputValue, regexPattern) {
     const regex = regexPattern;
     return regex.test(inputValue);
+}
+
+function confirmPassword() {
+    if (!(confirmPasswordInput.value === passwordInput.value)) {
+        setInvalidInput(confirmPasswordInput);
+        setInvalidInput(passwordInput, "Passwords don't match");
+    } else {
+        setValidInput(confirmPasswordInput);
+    }
 }
 
 
@@ -70,3 +85,6 @@ lastNameInput.addEventListener("change", e => validateInputValue(e.target, nameR
 
 emailInput.addEventListener("change", e => validateInputValue(e.target, emailRegex));
 phoneNumberInput.addEventListener("change", e => validateInputValue(e.target, phoneRegex));
+
+passwordInput.addEventListener("change", e => validateInputValue(e.target, passwordRegex));
+confirmPasswordInput.addEventListener("change", confirmPassword);
