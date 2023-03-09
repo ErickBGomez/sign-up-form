@@ -33,6 +33,7 @@ function setValueState(inputElement, newValue) {
 // Validations
 
 // 1. Name Input
+// Regex credits: https://regexr.com/3f8cm
 function validateNameInput(inputElement) {
     if (!checkRegexPattern(inputElement.value, /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/)) {
         setInvalidInput(inputElement, "Not a valid name");
@@ -42,6 +43,7 @@ function validateNameInput(inputElement) {
 }
 
 // 2. Email Input
+// Regex credits: https://regexr.com/2rhq7
 function validateEmailInput(inputElement) {
     if (!checkRegexPattern(inputElement.value, /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
         setInvalidInput(inputElement, "Not a valid email address");
@@ -51,6 +53,7 @@ function validateEmailInput(inputElement) {
 }
 
 // 3. Phone Input
+// Regex credits: https://regexr.com/37juu
 function validatePhoneInput(inputElement) {
     if (!checkRegexPattern(inputElement.value, /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/)) {
         setInvalidInput(inputElement, "Not a valid phone number");
