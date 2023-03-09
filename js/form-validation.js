@@ -12,29 +12,60 @@ const inputs = document.querySelectorAll("input");
 const form = document.querySelector("#main-form");
 
 // Functions
-function displayError(inputElement, errorMessage) {
+function setInvalidInput(inputElement, errorMessage) {
     setValueState(inputElement, "invalid");
 
     const validationSpan = inputElement.parentElement.querySelector(".info-validation");
     validationSpan.innerText = "* " + errorMessage;
 };
 
+function setValidInput(inputElement) {
+    setValueState(inputElement, "valid");
+    
+    const validationSpan = inputElement.parentElement.querySelector(".info-validation");
+    validationSpan.innerText = "* No errors found";
+}
+
 function setValueState(inputElement, newValue) {
     inputElement.dataset.valuestate = newValue;
 }
 
 // Validations
+// 1. Generic Input
 function validateGenericInput(inputElement) {
     if (inputElement.value.length == 0) {
-        displayError(inputElement, "Field cannot be empty");
-    } else {
-        setValueState(inputElement, "valid");
+        setInvalidInput(inputElement, "Field cannot be empty");
     }
 }
+
+// 2. Name Input
+function validateNameInput(inputElement) {
+    if (!checkNamePattern(inputElement.value)) {
+        setInvalidInput(inputElement, "Not a valid name");
+    } else {
+        setValidInput(inputElement);
+    }
+}
+
+function checkNamePattern(value) {
+    const regex = /[A-Za-z]+/;
+    return regex.test(value);
+}
+
 
 //Events
 form.addEventListener("submit", e => {
     e.preventDefault();
+});
+
+
+
+firstNameInput.addEventListener("change", e => {
+    validateNameInput(e.target);
+});
+
+lastNameInput.addEventListener("change", e=> {
+    validateNameInput(e.target);
 });
 
 inputs.forEach(input => {
