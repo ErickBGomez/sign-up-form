@@ -52,6 +52,12 @@ function validateInputValue(inputElement, regexPattern) {
     }
 }
 
+function checkRegexPattern(inputValue, regexPattern) {
+    const regex = regexPattern;
+    return regex.test(inputValue);
+}
+
+
 //Events
 form.addEventListener("submit", e => {
     e.preventDefault();
