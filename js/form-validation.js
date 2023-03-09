@@ -50,6 +50,15 @@ function validateEmailInput(inputElement) {
     }
 }
 
+// 3. Phone Input
+function validatePhoneInput(inputElement) {
+    if (!checkRegexPattern(inputElement.value, /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/)) {
+        setInvalidInput(inputElement, "Not a valid phone number");
+    } else {
+        setValidInput(inputElement);
+    }
+}
+
 function checkRegexPattern(inputValue, regexPattern) {
     const regex = regexPattern;
     return regex.test(inputValue);
@@ -74,6 +83,7 @@ firstNameInput.addEventListener("change", e => validateNameInput(e.target));
 lastNameInput.addEventListener("change", e => validateNameInput(e.target));
 
 emailInput.addEventListener("change", e => validateEmailInput(e.target));
+phoneNumberInput.addEventListener("change", e => validatePhoneInput(e.target));
 
 inputs.forEach(input => {
     input.addEventListener("change", e => {
