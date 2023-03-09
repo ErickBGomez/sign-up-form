@@ -48,7 +48,7 @@ function validateNameInput(inputElement) {
 }
 
 function checkNamePattern(value) {
-    const regex = /[A-Za-z]+/;
+    const regex = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
     return regex.test(value);
 }
 
