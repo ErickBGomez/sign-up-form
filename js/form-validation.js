@@ -23,6 +23,8 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
 const validationDelay = 750;
 
+// Add a Stack or Queue to count how many inputs are invalid
+
 // Functions
 function setInvalidInput(inputElement, errorMessage = "") {
     setValueState(inputElement, "invalid");
@@ -88,6 +90,7 @@ function confirmPassword() {
 
 //Events
 form.addEventListener("submit", e => {
+    alert("Some inputs are invalid");
     e.preventDefault();
 });
 
