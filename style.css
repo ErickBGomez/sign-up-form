@@ -216,6 +216,18 @@ input:placeholder-shown + label {
     color: var(--invalid-accent);
 }
 
+.text-limit {
+    display: block;
+    position: absolute;
+    top: 9px;
+    font-size: 0.75rem;
+    color: var(--input-color);
+    right: 14px;
+    visibility: hidden;
+    cursor: text;
+    user-select: none;
+}
+
 
 
 /* Input status: */
@@ -238,20 +250,20 @@ input:focus + label {
     color: var(--blue-accent);
 }
 
+input:focus ~ .text-limit {
+    color: var(--blue-accent);
+    visibility: visible;
+}
+
 /* Valid value */
 
 input[data-valueState="valid"] {
     border-color: var(--valid-accent);
 }
 
-input[data-valueState="valid"] + label {
+input[data-valueState="valid"] + label,
+input[data-valueState="valid"] ~ .text-limit {
     color: var(--valid-accent);
-}
-
-input[data-valueState="valid"]::after {
-    position: absolute;
-    content: "✅️";
-    left: 30px;
 }
 
 /* Invalid value */
@@ -260,7 +272,8 @@ input[data-valueState="invalid"] {
     border-color: var(--invalid-accent);
 }
 
-input[data-valueState="invalid"] + label {
+input[data-valueState="invalid"] + label,
+input[data-valueState="invalid"] ~ .text-limit {
     color: var(--invalid-accent);
 }
 
