@@ -202,7 +202,7 @@ input:placeholder-shown + label {
     font-size: 1rem;
     border: 1.5px solid var(--input-color);
     background-color: var(--form-background);
-    padding: 27px 12px 6px 12px;
+    padding: 27px 42px 6px 12px;
     border-radius: 7px;
 }
 
@@ -214,6 +214,18 @@ input:placeholder-shown + label {
     margin-left: 5px;
     margin-right: 5px;
     color: var(--invalid-accent);
+}
+
+.icon-validation {
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    /* Provisional color */
+
+    transition: 100ms;
 }
 
 .text-limit {
@@ -255,6 +267,13 @@ input:focus ~ .text-limit {
     visibility: visible;
 }
 
+input:focus ~ .icon-validation,
+input:not(:placeholder-shown) ~ .icon-validation {
+    top: 27px;
+    width: 18px;
+    height: 18px;
+}
+
 /* Valid value */
 
 input[data-valueState="valid"] {
@@ -264,6 +283,10 @@ input[data-valueState="valid"] {
 input[data-valueState="valid"] + label,
 input[data-valueState="valid"] ~ .text-limit {
     color: var(--valid-accent);
+}
+
+input[data-valueState="valid"] ~ .icon-validation {
+    background-color: var(--valid-accent);
 }
 
 /* Invalid value */
@@ -279,6 +302,10 @@ input[data-valueState="invalid"] ~ .text-limit {
 
 input[data-valueState="invalid"] ~ .info-validation {
     display: block;
+}
+
+input[data-valueState="invalid"] ~ .icon-validation {
+    background-color: var(--invalid-accent);
 }
 
 
