@@ -28,13 +28,16 @@ const validationDelay = 750;
 // Functions
 function setInvalidInput(inputElement, errorMessage = "") {
     setValueState(inputElement, "invalid");
+    changeInputIcon(inputElement, "cancel");
 
+    // Change info-validation error message
     const validationSpan = inputElement.parentElement.querySelector(".info-validation");
     validationSpan.innerText = errorMessage;
-};
+}
 
 function setValidInput(inputElement) {
     setValueState(inputElement, "valid");
+    changeInputIcon(inputElement, "check_circle");
     
     const validationSpan = inputElement.parentElement.querySelector(".info-validation");
     validationSpan.innerText = "* No errors found";
@@ -42,6 +45,11 @@ function setValidInput(inputElement) {
 
 function setValueState(inputElement, newValue) {
     inputElement.dataset.valuestate = newValue;
+}
+
+function changeInputIcon(inputElement, newIconString) {
+    const inputIcon = inputElement.parentElement.querySelector(".icon-validation");
+    inputIcon.innerText = newIconString;
 }
 
 // Validations
