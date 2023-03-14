@@ -379,8 +379,9 @@ footer {
     position: absolute;
     bottom: 0px;
     
-    background-color: var(--text-color);
-    color: var(--form-background);
+    background-color: var(--form-background);
+    box-shadow: 0px 0px 18px 5px var(--form-shadow);
+    color: var(--text-color);
     font-size: 1.05rem;
     width: 100%;
     text-align: center;
