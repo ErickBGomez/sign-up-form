@@ -276,8 +276,7 @@ input:focus ~ .text-limit {
     visibility: visible;
 }
 
-input:focus ~ .icon-validation,
-input:not(:placeholder-shown) ~ .icon-validation {
+input:focus ~ .icon-validation {
     top: 24px;
     scale: 0.8;
 }
