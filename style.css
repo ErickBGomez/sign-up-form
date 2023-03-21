@@ -140,7 +140,8 @@ footer {
     background-color: var(--sign-up-background);
 }
 
-.sign-up-container > * {
+.sign-up-container > div,
+.sign-up-container > form {
     padding-right: 90px;
     padding-left: 90px;
 }
