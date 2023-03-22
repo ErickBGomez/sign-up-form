@@ -26,13 +26,17 @@ const validationDelay = 750;
 // Add a Stack or Queue to count how many inputs are invalid
 
 // Functions
-function setInvalidInput(inputElement, errorMessage = "") {
+function setInvalidInput(inputElement, errorMessage = "", displayHelp = false) {
     setValueState(inputElement, "invalid");
     changeInputIcon(inputElement, "cancel");
 
     // Change info-validation error message
     const validationSpan = inputElement.parentElement.querySelector(".info-validation");
     validationSpan.innerText = errorMessage;
+
+    const helpValidationIcon = inputElement.parentElement.querySelector(".help-validation");
+
+    helpValidationIcon.style.visibility = (displayHelp) ? "visible" : "hidden";
 }
 
 function setValidInput(inputElement) {
@@ -58,11 +62,11 @@ function validateInputValue(inputElement, regexPattern, patternErrorMessage = "N
     const delayedValidations = () => {
         // Empty inputs
         if (inputElement.value.length == 0) {
-            setInvalidInput(inputElement, "Field cannot be empty");
+            setInvalidInput(inputElement, "Field cannot be empty", false);
         }
         // Regex pattern
         else if (!checkRegexPattern(inputElement.value, regexPattern)) {
-            setInvalidInput(inputElement, patternErrorMessage);
+            setInvalidInput(inputElement, patternErrorMessage, true);
         }
         // No errors found:
         else {
@@ -82,10 +86,10 @@ function checkRegexPattern(inputValue, regexPattern) {
 function confirmPassword() {
     const delayedConfirm = () => {
         if (confirmPasswordInput.value == 0) {
-            setInvalidInput(confirmPasswordInput, "Field cannot be empty");
+            setInvalidInput(confirmPasswordInput, "Field cannot be empty", false);
         } else if (!(confirmPasswordInput.value === passwordInput.value)) {
             setInvalidInput(confirmPasswordInput);
-            setInvalidInput(passwordInput, "Passwords don't match");
+            setInvalidInput(passwordInput, "Passwords don't match", false);
         } else {
             setValidInput(confirmPasswordInput);
         }
