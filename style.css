@@ -239,12 +239,12 @@ input:placeholder-shown + label {
 }
 
 .help-dialog {
-    width: 125px;
+    width: 175px;
     position: absolute;
     top: 20px;
     background-color: var(--help-dialog-box-color);
     color: var(--form-background);
-    padding: 5px 12px;
+    padding: 6px 12px;
     border-radius: 5px;
     font-size: 0.85rem;
     z-index: 1;
