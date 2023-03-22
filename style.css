@@ -62,7 +62,7 @@ footer {
 }
 
 ul {
-    margin: 5px 0 0 0;
+    margin: 5px 0 7px 0;
     padding-left: 10px;
 }
 
@@ -228,6 +228,7 @@ input:placeholder-shown + label {
 
 .info-validation {
     font-size: 0.75rem;
+    font-weight: 400;
 }
 
 .help-validation {
@@ -299,6 +300,7 @@ input:focus {
 input:focus + label,
 input:not(:placeholder-shown) + label {
     font-size: 0.75rem;
+    font-weight: 500;
     top: 9px;
 }
 
