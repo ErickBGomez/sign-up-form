@@ -200,6 +200,7 @@ li::marker {
     top: 0;
     left: -90px;
     opacity: 0;
+    color: var(--text-color);
     cursor: pointer;
 
     transition: 300ms;
