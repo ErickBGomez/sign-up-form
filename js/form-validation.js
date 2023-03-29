@@ -85,13 +85,15 @@ function checkRegexPattern(inputValue, regexPattern) {
 
 function confirmPassword() {
     const delayedConfirm = () => {
-        if (confirmPasswordInput.value == 0) {
-            setInvalidInput(confirmPasswordInput, "Field cannot be empty", false);
-        } else if (!(confirmPasswordInput.value === passwordInput.value)) {
+        if (passwordInput.dataset.valuestate == "invalid" || confirmPasswordInput.dataset.valuestate == "invalid") {
+            setInvalidInput(passwordInput);
             setInvalidInput(confirmPasswordInput);
-            setInvalidInput(passwordInput, "Passwords don't match", false);
-        } else {
+        } else if (passwordInput.value == confirmPasswordInput.value) {
+            setValidInput(passwordInput);
             setValidInput(confirmPasswordInput);
+        } else {
+            setInvalidInput(passwordInput);
+            setInvalidInput(confirmPasswordInput);
         }
     };
 
@@ -115,6 +117,7 @@ emailInput.addEventListener("input", e => validateInputValue(e.target, emailRege
 phoneNumberInput.addEventListener("input", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number"));
 
 passwordInput.addEventListener("input", e => validateInputValue(e.target, passwordRegex, "Not a strong password"));
+passwordInput.addEventListener("input", confirmPassword);
 confirmPasswordInput.addEventListener("input", confirmPassword);
 
 inputs.forEach(input => input.addEventListener("input", e => setValueState(e.target, "none")));
