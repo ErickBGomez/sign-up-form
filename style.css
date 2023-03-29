@@ -173,11 +173,6 @@ li::marker {
 /* Hacer animaciones de CSS aquí */
 
 .light-dark-mode-container {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    column-gap: 15px;
-
     position: absolute;
     top: 15px;
     right: 20px;
@@ -192,14 +187,32 @@ li::marker {
     transition: 100ms;
 }
 
-.light-dark-mode-icon:hover {
+.light-dark-mode-container:hover > .light-dark-mode-icon {
     opacity: 1;
     transition: 100ms;
 }
 
+.light-dark-mode-text {
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    width: 115px;
+    top: 0;
+    left: -80px;
+    opacity: 0;
+    cursor: pointer;
+
+    transition: 300ms;
+
+}
+
 .light-dark-mode-container:hover > .light-dark-mode-text {
     font-weight: 500;
+    visibility: visible;
+    left: -120px;
+    opacity: 100;
 
+    transition: 300ms;
 }
 
 /* Form area */
