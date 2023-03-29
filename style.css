@@ -29,6 +29,20 @@
     --help-dialog-box-color: #000000b6;
 }
 
+:root.dark {
+    --text-color: #e4e4e4;
+    --sign-up-background: #383838;
+    --form-background: #494949;
+    --form-shadow: #2222223a;
+    --input-color: #c9c9c9;
+    --blue-accent: #5d9de6;
+    --blue-focus-accent: #6798e0;
+    --invalid-accent: #e46e6e;
+    --valid-accent: #47d68f;
+    --terms-and-service-text: #c0c0c0;
+    --help-dialog-box-color: #ffffffb6;
+}
+
 /* General styles */
 
 * {

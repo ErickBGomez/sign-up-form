@@ -23,4 +23,4 @@ function toCapitalize(string) {
 toggleThemeElement.addEventListener("click", toggleTheme);
 
 // Initial theme: Light
-root.className = "light";
+setTheme(currentTheme);
