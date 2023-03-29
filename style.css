@@ -172,13 +172,13 @@ li::marker {
 
 /* Hacer animaciones de CSS aquí */
 
-.light-dark-mode-container {
+.theme-container {
     position: absolute;
     top: 15px;
     right: 20px;
 }
 
-.light-dark-mode-icon {
+.theme-icon {
     scale: 1.5;
     color: var(--text-color);
     cursor: pointer;
@@ -187,12 +187,12 @@ li::marker {
     transition: 100ms;
 }
 
-.light-dark-mode-container:hover > .light-dark-mode-icon {
+.theme-container:hover > .theme-icon {
     opacity: 1;
     transition: 100ms;
 }
 
-.light-dark-mode-text {
+.theme-text {
     visibility: hidden;
     position: absolute;
     display: block;
@@ -206,7 +206,7 @@ li::marker {
 
 }
 
-.light-dark-mode-container:hover > .light-dark-mode-text {
+.theme-container:hover > .theme-text {
     font-weight: 500;
     visibility: visible;
     left: -120px;
