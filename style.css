@@ -31,8 +31,8 @@
 
 :root.dark {
     --text-color: #e4e4e4;
-    --sign-up-background: #383838;
-    --form-background: #494949;
+    --sign-up-background: #2c2c2c;
+    --form-background: #363636;
     --form-shadow: #2222223a;
     --input-color: #c9c9c9;
     --blue-accent: #5d9de6;
