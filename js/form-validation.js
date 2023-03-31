@@ -58,7 +58,7 @@ function changeInputIcon(inputElement, newIconString) {
 
 // Validations
 
-function validateInputValue(inputElement, regexPattern, patternErrorMessage = "Not a valid value") {
+function validateInputValue(inputElement, regexPattern = "skip", patternErrorMessage = "Not a valid value", delay = 0) {
     const delayedValidations = () => {
         // Empty inputs
         if (inputElement.value.length == 0) {
@@ -78,7 +78,7 @@ function validateInputValue(inputElement, regexPattern, patternErrorMessage = "N
     };
     
     clearTimeout(delayedValidations);
-    setTimeout(delayedValidations, validationDelay);
+    setTimeout(delayedValidations, delay);
 }
 
 function checkRegexPattern(inputValue, regexPattern) {
@@ -89,7 +89,7 @@ function checkRegexPattern(inputValue, regexPattern) {
     return regex.test(inputValue);
 }
 
-function confirmPassword() {
+function confirmPassword(delay = 0) {
     const delayedConfirm = () => {
         if (!((passwordInput.dataset.valuestate !== "none") && 
             (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)))
@@ -107,29 +107,32 @@ function confirmPassword() {
     };
 
     clearTimeout(delayedConfirm);
-    setTimeout(delayedConfirm, validationDelay);
+    setTimeout(delayedConfirm, delay);
 }
 
 
 //Events
 form.addEventListener("submit", e => {
-    alert("Some inputs are invalid");
+    inputs.forEach(input => {
+        validateInputValue(input);
+    })
+    
     e.preventDefault();
 });
 
 
 
-firstNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid name"));
-lastNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid last name"));
+firstNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid name", validationDelay));
+lastNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid last name", validationDelay));
 
-emailInput.addEventListener("input", e => validateInputValue(e.target, emailRegex, "Not a valid email"));
-phoneNumberInput.addEventListener("input", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number"));
+emailInput.addEventListener("input", e => validateInputValue(e.target, emailRegex, "Not a valid email", validationDelay));
+phoneNumberInput.addEventListener("input", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number", validationDelay));
 
-passwordInput.addEventListener("input", e => validateInputValue(e.target, passwordRegex, "Not a strong password"));
+passwordInput.addEventListener("input", e => validateInputValue(e.target, passwordRegex, "Not a strong password", validationDelay));
 // confirmPasswordInput is the only one to skip regexPattern just to validate if value is empty
-confirmPasswordInput.addEventListener("input", e => validateInputValue(e.target, "skip"));
+confirmPasswordInput.addEventListener("input", e => validateInputValue(e.target, null, null, validationDelay));
 
-passwordInput.addEventListener("input", confirmPassword);
-confirmPasswordInput.addEventListener("input", confirmPassword);
+passwordInput.addEventListener("input", e => confirmPassword(validationDelay));
+confirmPasswordInput.addEventListener("input", e => confirmPassword(validationDelay));
 
 inputs.forEach(input => input.addEventListener("input", e => setValueState(e.target, "none")));
