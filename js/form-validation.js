@@ -23,6 +23,9 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
 const validationDelay = 750;
 
+// Pendiente hacer un pool de invalidInputs
+const invalidInputs = [];
+
 // Add a Stack or Queue to count how many inputs are invalid
 
 // Functions
@@ -49,6 +52,10 @@ function setValidInput(inputElement) {
 
 function setValueState(inputElement, newValue) {
     inputElement.dataset.valuestate = newValue;
+
+    if (newValue === "invalid" && !invalidInputs.includes(inputElement)) {
+        invalidInputs.push(inputElement);
+    }
 }
 
 function changeInputIcon(inputElement, newIconString) {
@@ -115,7 +122,13 @@ function confirmPassword(delay = 0) {
 form.addEventListener("submit", e => {
     inputs.forEach(input => {
         validateInputValue(input);
-    })
+    });
+
+    if (allInputsValid) {
+        alert("Form sent successfully!");
+    } else {
+        alert("Some inputs are invalid");
+    }
     
     e.preventDefault();
 });
