@@ -91,16 +91,18 @@ function checkRegexPattern(inputValue, regexPattern) {
 
 function confirmPassword() {
     const delayedConfirm = () => {
-        if ((passwordInput.dataset.valuestate !== "none") && (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)) {
-            if (passwordInput.value === confirmPasswordInput.value) {
-                if (passwordInput.dataset.valuestate === "invalid") {
-                    setInvalidInput(confirmPasswordInput);
-                } else {
-                    setValidInput(confirmPasswordInput);
-                }
+        if (!((passwordInput.dataset.valuestate !== "none") && 
+            (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)))
+        return;
+
+        if (passwordInput.value === confirmPasswordInput.value) {
+            if (passwordInput.dataset.valuestate === "invalid") {
+                setInvalidInput(confirmPasswordInput);
             } else {
-                setInvalidInput(confirmPasswordInput, "Passwords don't match", false);
+                setValidInput(confirmPasswordInput);
             }
+        } else {
+            setInvalidInput(confirmPasswordInput, "Passwords don't match", false);
         }
     };
 
