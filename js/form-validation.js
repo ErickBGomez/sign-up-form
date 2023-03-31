@@ -85,15 +85,12 @@ function checkRegexPattern(inputValue, regexPattern) {
 
 function confirmPassword() {
     const delayedConfirm = () => {
-        if (passwordInput.dataset.valuestate == "invalid" || confirmPasswordInput.dataset.valuestate == "invalid") {
-            setInvalidInput(passwordInput);
-            setInvalidInput(confirmPasswordInput);
-        } else if (passwordInput.value == confirmPasswordInput.value) {
-            setValidInput(passwordInput);
-            setValidInput(confirmPasswordInput);
-        } else {
-            setInvalidInput(passwordInput);
-            setInvalidInput(confirmPasswordInput);
+        if (passwordInput.dataset.valuestate !== "none" && (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)) {
+            if (passwordInput.value === confirmPasswordInput.value) {
+                setValidInput(confirmPasswordInput);
+            } else {
+                setInvalidInput(confirmPasswordInput, "Passwords don't match", false);
+            }
         }
     };
 
