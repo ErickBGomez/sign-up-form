@@ -64,14 +64,17 @@ function validateInputValue(inputElement, regexPattern, patternErrorMessage = "N
         if (inputElement.value.length == 0) {
             setInvalidInput(inputElement, "Field cannot be empty", false);
         }
-        // Regex pattern
-        else if (!checkRegexPattern(inputElement.value, regexPattern)) {
-            setInvalidInput(inputElement, patternErrorMessage, true);
+        else if (regexPattern !== "skip") {
+            // Regex pattern
+            if (!checkRegexPattern(inputElement.value, regexPattern)) {
+                setInvalidInput(inputElement, patternErrorMessage, true);
+            }
+            // No errors found:
+            else {
+                setValidInput(inputElement);
+            }
         }
-        // No errors found:
-        else {
-            setValidInput(inputElement);
-        }
+        // Inputs will keep "none" valueState if they skip regexPattern
     };
     
     clearTimeout(delayedValidations);
@@ -79,15 +82,22 @@ function validateInputValue(inputElement, regexPattern, patternErrorMessage = "N
 }
 
 function checkRegexPattern(inputValue, regexPattern) {
+    // Skip regexPatternValidation
+    if (regexPattern === "skip") return true;
+    
     const regex = regexPattern;
     return regex.test(inputValue);
 }
 
 function confirmPassword() {
     const delayedConfirm = () => {
-        if (passwordInput.dataset.valuestate !== "none" && (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)) {
+        if ((passwordInput.dataset.valuestate !== "none") && (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)) {
             if (passwordInput.value === confirmPasswordInput.value) {
-                setValidInput(confirmPasswordInput);
+                if (passwordInput.dataset.valuestate === "invalid") {
+                    setInvalidInput(confirmPasswordInput);
+                } else {
+                    setValidInput(confirmPasswordInput);
+                }
             } else {
                 setInvalidInput(confirmPasswordInput, "Passwords don't match", false);
             }
@@ -114,6 +124,9 @@ emailInput.addEventListener("input", e => validateInputValue(e.target, emailRege
 phoneNumberInput.addEventListener("input", e => validateInputValue(e.target, phoneRegex, "Not a valid phone number"));
 
 passwordInput.addEventListener("input", e => validateInputValue(e.target, passwordRegex, "Not a strong password"));
+// confirmPasswordInput is the only one to skip regexPattern just to validate if value is empty
+confirmPasswordInput.addEventListener("input", e => validateInputValue(e.target, "skip"));
+
 passwordInput.addEventListener("input", confirmPassword);
 confirmPasswordInput.addEventListener("input", confirmPassword);
 
