@@ -130,7 +130,7 @@ phoneNumberInput.addEventListener("input", e => validateInputValue(e.target, pho
 
 passwordInput.addEventListener("input", e => validateInputValue(e.target, passwordRegex, "Not a strong password", validationDelay));
 // confirmPasswordInput is the only one to skip regexPattern just to validate if value is empty
-confirmPasswordInput.addEventListener("input", e => validateInputValue(e.target, null, null, validationDelay));
+confirmPasswordInput.addEventListener("input", e => validateInputValue(e.target, undefined, undefined, validationDelay));
 
 passwordInput.addEventListener("input", e => confirmPassword(validationDelay));
 confirmPasswordInput.addEventListener("input", e => confirmPassword(validationDelay));
