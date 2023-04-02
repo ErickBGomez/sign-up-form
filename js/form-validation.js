@@ -8,6 +8,9 @@ const confirmPasswordInput = document.querySelector("#password2");
 
 const inputs = document.querySelectorAll("input");
 
+// Array to save valid inputs. This will help to make sure all inputs are valid before sending data
+const validInputs = [];
+
 // Select form
 const form = document.querySelector("#main-form");
 
@@ -24,9 +27,6 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 // Delay for every input validation
 const validationDelay = 750;
 
-// Array to save valid inputs. This will help to make sure all inputs are valid before sending data
-const validInputs = [];
-const totalInputs = document.querySelectorAll("input").length;
 
 // Functions
 function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
@@ -115,7 +115,7 @@ form.addEventListener("submit", e => {
         validateInputValue(input);
     });
 
-    if (validInputs.length === totalInputs) {
+    if (validInputs.length === inputs.length) {
         alert("Form sent successfully!");
     } else {
         alert("Some inputs are invalid");
