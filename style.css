@@ -562,3 +562,15 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+.experimental > button {
+    background-color: var(--valid-accent);
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+}
