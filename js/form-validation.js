@@ -113,21 +113,33 @@ function confirmPassword(delay = 0) {
 form.addEventListener("submit", e => {
     e.preventDefault();
 
-    setFlashMessageType("success");
-
     inputs.forEach(input => {
         validateInputValue(input);
     });
 
     if (validInputs.length === inputs.length) {
         alert("Form sent successfully!");
+        displayFlashMessageBox("success", "Success!", "Your account has been created");
     } else {
         alert("Some inputs are invalid");
+        displayFlashMessageBox("error", "Error!", "Please, fill the form correctly");
     }
 });
 
-function setFlashMessageType(messageType) {
+function displayFlashMessageBox(messageType, messageTitle, messageDescription) {
+    const flashIcon = flashMessage.querySelector(".flash-icon");
+    const flashTitle = flashMessage.querySelector(".flash-title");
+    const flashDescription = flashMessage.querySelector(".flash-description");
+    
     flashMessage.dataset.messagetype = messageType;
+    if (messageType === "success") flashIcon.innerText = "check_circle";
+    else flashIcon.innerText = "cancel";
+
+    flashTitle.innerText = messageTitle;
+    flashDescription.innerText = messageDescription;
+
+
+
     flashMessage.dataset.visibilitystate = "show";
 }
 
@@ -150,3 +162,21 @@ passwordInput.addEventListener("input", e => confirmPassword(validationDelay));
 confirmPasswordInput.addEventListener("input", e => confirmPassword(validationDelay));
 
 inputs.forEach(input => input.addEventListener("input", e => setInputState(e.target, "none")));
+
+// Experimental
+const fillInputs = document.querySelector(".experimental > button");
+fillInputs.addEventListener("click", e => {
+    firstNameInput.value = "Erick";
+    lastNameInput.value = "Gómez";
+    emailInput.value = "erick@email.com";
+    phoneNumberInput.value = "22222222";
+    passwordInput.value = confirmPasswordInput.value = "T3st!ngW0rds";
+
+    validateInputValue(firstNameInput, nameRegex, "Not a valid name");
+    validateInputValue(lastNameInput, nameRegex, "Not a valid last name");
+    validateInputValue(emailInput, emailRegex, "Not a valid email");
+    validateInputValue(phoneNumberInput, phoneRegex, "Not a valid phone");
+    validateInputValue(passwordInput, passwordRegex, "Not a strong password")
+    validateInputValue(confirmPasswordInput, undefined, undefined);
+    confirmPassword(validationDelay);
+});
