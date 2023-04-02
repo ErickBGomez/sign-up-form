@@ -84,6 +84,10 @@ li::marker {
     content: "\2022   ";
 }
 
+i {
+    cursor: default;
+}
+
 .main-container {
     display: flex;
     height: 100vh;
@@ -473,6 +477,16 @@ input[data-valueState="none"] ~ .icon-validation {
     color: var(--form-background);
     padding: 12px 15px;
     border-radius: 7px;
+}
+
+.flash-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.flash-text {
+    font-weight: 400;
+    font-size: 0.9rem;
 }
 
 /* Footer */
