@@ -148,7 +148,7 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     const flashMessage = document.createElement("div");
     flashMessage.className = "flash-message";
     flashMessage.dataset.messagetype = messageType;
-    flashMessage.dataset.visibilitystate = "";
+    flashMessage.dataset.visibilitystate = "show";
 
     const icon = document.createElement("i");
     icon.className = "flash-icon material-symbols-outlined";
@@ -168,10 +168,8 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     const closeIcon = document.createElement("div");
     closeIcon.className = "flash-close";
     closeIcon.innerText = "\u00D7";
-    closeIcon.addEventListener("click", e => {
-        flashMessage.dataset.visibilitystate = "hide";
-        flashMessagesContainer.removeChild(e.target.parentElement);
-    });
+    closeIcon.addEventListener("click", e => deleteFlashMessage(flashMessage));
+    
 
     textContainer.appendChild(title);
     textContainer.appendChild(description);
@@ -181,6 +179,14 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     flashMessage.appendChild(closeIcon);
 
     flashMessagesContainer.appendChild(flashMessage);
+}
+
+function deleteFlashMessage(flashMessageElement) {
+    flashMessageElement.dataset.visibilitystate = "hide";
+
+    flashMessageElement.addEventListener("animationend", e => {
+        flashMessagesContainer.removeChild(flashMessageElement);
+    });
 }
 
 // Input events (generic validation, regex, confirm password and resetting input state)

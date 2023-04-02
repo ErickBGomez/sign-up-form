@@ -481,7 +481,7 @@ input[data-valueState="none"] ~ .icon-validation {
     display: flex;
     align-items: center;
     gap: 15px;
-    bottom: 0;
+    opacity: 0;
     
     background-color: var(--input-color);
     color: var(--form-background);
@@ -489,6 +489,8 @@ input[data-valueState="none"] ~ .icon-validation {
     border-radius: 7px;
     width: 100%;
     max-width: 325px;
+
+    
 }
 
 .flash-message[data-messageType="success"] {
@@ -500,17 +502,36 @@ input[data-valueState="none"] ~ .icon-validation {
 }
 
 .flash-message[data-visibilityState="show"] {
-    bottom: 0px;
-    opacity: 1;
-
-    transition: 300ms;
+    animation-name: flashShow;
+    animation-timing-function: cubic-bezier(0, 0, 0, 1);
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
 }
 
 .flash-message[data-visibilityState="hide"] {
-    bottom: -20px;
-    opacity: 0;
+    animation-name: flashHide;
+    animation-duration: 200ms;
+}
 
-    transition: 200ms;
+@keyframes flashShow {
+    from {
+        right: -40px;
+        opacity: 0;
+    }
+    to {
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes flashHide {
+    from {
+        right: 0px;
+        opacity: 1;
+    } to {
+        right: -40px;
+        opacity: 0;
+    }
 }
 
 .flash-text {
