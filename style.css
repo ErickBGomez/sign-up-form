@@ -473,12 +473,19 @@ input[data-valueState="none"] ~ .icon-validation {
     bottom: 60px;
     right: 20px;
     
-    background-color: var(--valid-accent);
     color: var(--form-background);
     padding: 12px 15px;
     border-radius: 7px;
     width: 100%;
     max-width: 325px;
+}
+
+.flash-message[data-messageType="success"] {
+    background-color: var(--valid-accent);
+}
+
+.flash-message[data-messageType="error"] {
+    background-color: var(--invalid-accent);
 }
 
 .flash-text {
