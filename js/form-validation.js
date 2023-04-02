@@ -148,7 +148,7 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     const flashMessage = document.createElement("div");
     flashMessage.className = "flash-message";
     flashMessage.dataset.messagetype = messageType;
-    flashMessage.dataset.visibilitystate = "show";
+    flashMessage.dataset.visibilitystate = "";
 
     const icon = document.createElement("i");
     icon.className = "flash-icon material-symbols-outlined";
@@ -169,7 +169,8 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     closeIcon.className = "flash-close";
     closeIcon.innerText = "\u00D7";
     closeIcon.addEventListener("click", e => {
-    flashMessage.dataset.visibilitystate = "hide";
+        flashMessage.dataset.visibilitystate = "hide";
+        flashMessagesContainer.removeChild(e.target.parentElement);
     });
 
     textContainer.appendChild(title);
