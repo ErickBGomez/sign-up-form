@@ -44,14 +44,18 @@ function setInputState(inputElement, newState, errorMessage = "", displayHelp = 
     if (newState === "valid") inputIcon.innerText = "check_circle";
     else if (newState === "invalid") inputIcon.innerText = "cancel";
 
-    // Count all valid inputs
-    if (newState !== "valid" && validInputs.includes(inputElement)) {
-        // splice() helps to remove an specific element in the array
-        const elementIndex = validInputs.indexOf(inputElement);
-        validInputs.splice(elementIndex, 1);
-    } else if (!validInputs.includes(inputElement)) {
-        // Add just the valid inputs that were not in the array before
-        validInputs.push(inputElement);
+    countValidInputs(inputElement, newState);
+}
+
+function countValidInputs(inputElement, inputState) {
+    if (inputState === "valid") {
+        // Nested conditional to ignore valid inputs that are included in the array
+        if (!validInputs.includes(inputElement)) {
+            validInputs.push(inputElement);
+        }
+    } else if (validInputs.includes(inputElement)) {
+        const index = validInputs.indexOf(inputElement);
+        validInputs.splice(index, 1);
     }
 }
 
