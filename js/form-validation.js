@@ -27,8 +27,7 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 // Delay for every input validation
 const validationDelay = 750;
 
-const flashMessage = document.querySelector(".flash-message");
-const flashClose = flashMessage.querySelector(".flash-close");
+const flashMessagesContainer = document.querySelector(".flash-messages-container");
 
 // Functions
 function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
@@ -122,11 +121,9 @@ form.addEventListener("submit", e => {
     });
 
     if (validInputs.length === inputs.length) {
-        alert("Form sent successfully!");
-        displayFlashMessageBox("success", "Success!", "Your account has been created");
+        createFlashMessage("success", "Success!", "You account has been created");
     } else {
-        alert("Some inputs are invalid");
-        displayFlashMessageBox("error", "Error!", "Please, fill the form correctly");
+        createFlashMessage("error", "Error!", "Some fields need to be corrected");
     }
 });
 
@@ -147,9 +144,43 @@ function displayFlashMessageBox(messageType, messageTitle, messageDescription) {
     flashMessage.dataset.visibilitystate = "show";
 }
 
-flashClose.addEventListener("click", e => {
+function createFlashMessage(messageType, titleString, descriptionString) {
+    const flashMessage = document.createElement("div");
+    flashMessage.className = "flash-message";
+    flashMessage.dataset.messagetype = messageType;
+    flashMessage.dataset.visibilitystate = "show";
+
+    const icon = document.createElement("i");
+    icon.className = "flash-icon material-symbols-outlined";
+    icon.innerText = (messageType === "success") ? "check_circle" : "cancel";
+
+    const textContainer = document.createElement("div");
+    textContainer.className = "flash-text";
+
+    const title = document.createElement("div");
+    title.className = "flash-title";
+    title.innerText = titleString;
+
+    const description = document.createElement("div");
+    description.className = "flash-description";
+    description.innerText = descriptionString;
+
+    const closeIcon = document.createElement("div");
+    closeIcon.className = "flash-close";
+    closeIcon.innerText = "\u00D7";
+    closeIcon.addEventListener("click", e => {
     flashMessage.dataset.visibilitystate = "hide";
-})
+    });
+
+    textContainer.appendChild(title);
+    textContainer.appendChild(description);
+
+    flashMessage.appendChild(icon);
+    flashMessage.appendChild(textContainer);
+    flashMessage.appendChild(closeIcon);
+
+    flashMessagesContainer.appendChild(flashMessage);
+}
 
 // Input events (generic validation, regex, confirm password and resetting input state)
 firstNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid name", validationDelay));
