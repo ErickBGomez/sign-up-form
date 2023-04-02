@@ -27,6 +27,8 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 // Delay for every input validation
 const validationDelay = 750;
 
+const flashMessage = document.querySelector(".flash-message");
+const flashClose = flashMessage.querySelector(".flash-close");
 
 // Functions
 function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
@@ -111,6 +113,8 @@ function confirmPassword(delay = 0) {
 form.addEventListener("submit", e => {
     e.preventDefault();
 
+    setFlashMessageType("success");
+
     inputs.forEach(input => {
         validateInputValue(input);
     });
@@ -121,6 +125,15 @@ form.addEventListener("submit", e => {
         alert("Some inputs are invalid");
     }
 });
+
+function setFlashMessageType(messageType) {
+    flashMessage.dataset.messagetype = messageType;
+    flashMessage.dataset.visibilitystate = "show";
+}
+
+flashClose.addEventListener("click", e => {
+    flashMessage.dataset.visibilitystate = "hide";
+})
 
 // Input events (generic validation, regex, confirm password and resetting input state)
 firstNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid name", validationDelay));
