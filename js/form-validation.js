@@ -29,38 +29,18 @@ const invalidInputs = [];
 // Add a Stack or Queue to count how many inputs are invalid
 
 // Functions
-function setInvalidInput(inputElement, errorMessage = "", displayHelp = false) {
-    setValueState(inputElement, "invalid");
-    changeInputIcon(inputElement, "cancel");
-
-    // Change info-validation error message
+function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
+    const inputIcon = inputElement.parentElement.querySelector(".icon-validation");
     const validationSpan = inputElement.parentElement.querySelector(".info-validation");
-    validationSpan.innerText = errorMessage;
-
     const helpValidationIcon = inputElement.parentElement.querySelector(".help-validation");
 
+    inputElement.dataset.valuestate = newState;
+    validationSpan.innerText = errorMessage;
     helpValidationIcon.style.visibility = (displayHelp) ? "visible" : "hidden";
-}
 
-function setValidInput(inputElement) {
-    setValueState(inputElement, "valid");
-    changeInputIcon(inputElement, "check_circle");
-    
-    const validationSpan = inputElement.parentElement.querySelector(".info-validation");
-    validationSpan.innerText = "* No errors found";
-}
-
-function setValueState(inputElement, newValue) {
-    inputElement.dataset.valuestate = newValue;
-
-    if (newValue === "invalid" && !invalidInputs.includes(inputElement)) {
-        invalidInputs.push(inputElement);
-    }
-}
-
-function changeInputIcon(inputElement, newIconString) {
-    const inputIcon = inputElement.parentElement.querySelector(".icon-validation");
-    inputIcon.innerText = newIconString;
+    // This could be approached with ternary operator, but "none" state has to be ignored
+    if (newState === "valid") inputIcon.innerText = "check_circle";
+    else if (newState === "invalid") inputIcon.innerText = "cancel";
 }
 
 // Validations
@@ -69,16 +49,16 @@ function validateInputValue(inputElement, regexPattern = "skip", patternErrorMes
     const delayedValidations = () => {
         // Empty inputs
         if (inputElement.value.length == 0) {
-            setInvalidInput(inputElement, "Field cannot be empty", false);
+            setInputState(inputElement, "invalid", "Field cannot be empty", false);
         }
         else if (regexPattern !== "skip") {
             // Regex pattern
             if (!checkRegexPattern(inputElement.value, regexPattern)) {
-                setInvalidInput(inputElement, patternErrorMessage, true);
+                setInputState(inputElement, "invalid", patternErrorMessage, true);
             }
             // No errors found:
             else {
-                setValidInput(inputElement);
+                setInputState(inputElement, "valid");
             }
         }
         // Inputs will keep "none" valueState if they skip regexPattern
@@ -104,12 +84,12 @@ function confirmPassword(delay = 0) {
 
         if (passwordInput.value === confirmPasswordInput.value) {
             if (passwordInput.dataset.valuestate === "invalid") {
-                setInvalidInput(confirmPasswordInput);
+                setInputState(confirmPasswordInput, "invalid");
             } else {
-                setValidInput(confirmPasswordInput);
+                setInputState(confirmPasswordInput, "valid");
             }
         } else {
-            setInvalidInput(confirmPasswordInput, "Passwords don't match", false);
+            setInputState(confirmPasswordInput, "invalid", "Passwords don't match", false);
         }
     };
 
@@ -148,4 +128,4 @@ confirmPasswordInput.addEventListener("input", e => validateInputValue(e.target,
 passwordInput.addEventListener("input", e => confirmPassword(validationDelay));
 confirmPasswordInput.addEventListener("input", e => confirmPassword(validationDelay));
 
-inputs.forEach(input => input.addEventListener("input", e => setValueState(e.target, "none")));
+inputs.forEach(input => input.addEventListener("input", e => setInputState(e.target, "none")));
