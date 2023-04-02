@@ -53,9 +53,7 @@ function setInputState(inputElement, newState, errorMessage = "", displayHelp = 
     }
 }
 
-
 // Validations
-
 function validateInputValue(inputElement, regexPattern = "skip", patternErrorMessage = "Not a valid value", delay = 0) {
     const delayedValidations = () => {
         // Empty inputs
@@ -108,8 +106,8 @@ function confirmPassword(delay = 0) {
     setTimeout(delayedConfirm, delay);
 }
 
-
-//Events
+//Events:
+// Form event (sending data)
 form.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -124,8 +122,7 @@ form.addEventListener("submit", e => {
     }
 });
 
-
-
+// Input events (generic validation, regex, confirm password and resetting input state)
 firstNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid name", validationDelay));
 lastNameInput.addEventListener("input", e => validateInputValue(e.target, nameRegex, "Not a valid last name", validationDelay));
 
