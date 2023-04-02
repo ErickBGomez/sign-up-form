@@ -482,11 +482,19 @@ input[data-valueState="none"] ~ .icon-validation {
 .flash-title {
     font-weight: 800;
     font-size: 1.1rem;
+    margin-bottom: 3px;
 }
 
-.flash-text {
+.flash-description {
     font-weight: 400;
     font-size: 0.9rem;
+}
+
+.flash-close {
+    font-weight: 800;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: 100%;
 }
 
 /* Footer */
