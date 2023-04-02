@@ -49,7 +49,7 @@ function setInputState(inputElement, newState, errorMessage = "", displayHelp = 
         // splice() helps to remove an specific element in the array
         const elementIndex = validInputs.indexOf(inputElement);
         validInputs.splice(elementIndex, 1);
-    } else {
+    } else if (!validInputs.includes(inputElement)) {
         // Add just the valid inputs that were not in the array before
         validInputs.push(inputElement);
     }

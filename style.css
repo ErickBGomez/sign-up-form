@@ -473,6 +473,7 @@ input[data-valueState="none"] ~ .icon-validation {
     bottom: 0px;
     right: 20px;
     
+    background-color: var(--input-color);
     color: var(--form-background);
     padding: 12px 15px;
     border-radius: 7px;
