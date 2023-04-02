@@ -24,9 +24,11 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 const validationDelay = 750;
 
 // Pendiente hacer un pool de invalidInputs
-const invalidInputs = [];
+const validInputs = [];
 
 // Add a Stack or Queue to count how many inputs are invalid
+
+const counter = document.querySelector(".counter");
 
 // Functions
 function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
@@ -41,7 +43,18 @@ function setInputState(inputElement, newState, errorMessage = "", displayHelp = 
     // This could be approached with ternary operator, but "none" state has to be ignored
     if (newState === "valid") inputIcon.innerText = "check_circle";
     else if (newState === "invalid") inputIcon.innerText = "cancel";
+
+    if (newState === "valid"){
+        if (!validInputs.includes(inputElement)) validInputs.push(inputElement);
+    } else if (validInputs.includes(inputElement)) {
+        const index = validInputs.indexOf(inputElement);
+        validInputs.splice(index, 1);
+    }
+
+    counter.innerText = validInputs.length;
+    console.log(validInputs);
 }
+
 
 // Validations
 
@@ -100,17 +113,19 @@ function confirmPassword(delay = 0) {
 
 //Events
 form.addEventListener("submit", e => {
+    e.preventDefault();
+
     inputs.forEach(input => {
         validateInputValue(input);
     });
 
-    if (allInputsValid) {
+    if (validInputs.length === 6) {
         alert("Form sent successfully!");
     } else {
         alert("Some inputs are invalid");
     }
     
-    e.preventDefault();
+    
 });
 
 
