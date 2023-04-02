@@ -470,7 +470,7 @@ input[data-valueState="none"] ~ .icon-validation {
     gap: 15px;
     
     position: fixed;
-    bottom: 60px;
+    bottom: 0px;
     right: 20px;
     
     color: var(--form-background);
@@ -486,6 +486,22 @@ input[data-valueState="none"] ~ .icon-validation {
 
 .flash-message[data-messageType="error"] {
     background-color: var(--invalid-accent);
+}
+
+.flash-message[data-visibilityState="show"] {
+    bottom: 60px;
+    opacity: 1;
+    visibility: visible;
+
+    transition: 100ms;
+}
+
+.flash-message[data-visibilityState="hide"] {
+    bottom: 35px;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 100ms;
 }
 
 .flash-text {
