@@ -21,14 +21,12 @@ const phoneRegex = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(
 // Password Regex credits: https://regexr.com/3bfsi
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
+// Delay for every input validation
 const validationDelay = 750;
 
-// Pendiente hacer un pool de invalidInputs
+// Array to save valid inputs. This will help to make sure all inputs are valid before sending data
 const validInputs = [];
-
-// Add a Stack or Queue to count how many inputs are invalid
-
-const counter = document.querySelector(".counter");
+const totalInputs = document.querySelectorAll("input").length;
 
 // Functions
 function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
@@ -44,15 +42,15 @@ function setInputState(inputElement, newState, errorMessage = "", displayHelp = 
     if (newState === "valid") inputIcon.innerText = "check_circle";
     else if (newState === "invalid") inputIcon.innerText = "cancel";
 
-    if (newState === "valid"){
-        if (!validInputs.includes(inputElement)) validInputs.push(inputElement);
-    } else if (validInputs.includes(inputElement)) {
-        const index = validInputs.indexOf(inputElement);
-        validInputs.splice(index, 1);
+    // Count all valid inputs
+    if (newState !== "valid" && validInputs.includes(inputElement)) {
+        // splice() helps to remove an specific element in the array
+        const elementIndex = validInputs.indexOf(inputElement);
+        validInputs.splice(elementIndex, 1);
+    } else {
+        // Add just the valid inputs that were not in the array before
+        validInputs.push(inputElement);
     }
-
-    counter.innerText = validInputs.length;
-    console.log(validInputs);
 }
 
 
@@ -119,13 +117,11 @@ form.addEventListener("submit", e => {
         validateInputValue(input);
     });
 
-    if (validInputs.length === 6) {
+    if (validInputs.length === totalInputs) {
         alert("Form sent successfully!");
     } else {
         alert("Some inputs are invalid");
     }
-    
-    
 });
 
 
