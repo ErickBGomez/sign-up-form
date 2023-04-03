@@ -207,7 +207,7 @@ i {
     cursor: pointer;
 }
 
-.image-slideshow-indicator.selected {
+.image-slideshow-indicator[data-indicatorState="selected"] {
     background-color: var(--slideshow-white);
 }
 
