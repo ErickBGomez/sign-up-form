@@ -165,10 +165,14 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     description.className = "flash-description";
     description.innerText = descriptionString;
 
+    const deleteFlashMessageTimeout = () => deleteFlashMessage(flashMessage);
     const closeIcon = document.createElement("div");
     closeIcon.className = "flash-close";
     closeIcon.innerText = "\u00D7";
-    closeIcon.addEventListener("click", e => deleteFlashMessage(flashMessage));
+    closeIcon.addEventListener("click", e => {
+        clearTimeout(deleteFlashMessageTimeout);
+        deleteFlashMessage(flashMessage);
+    });
     
 
     textContainer.appendChild(title);
@@ -179,6 +183,8 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     flashMessage.appendChild(closeIcon);
 
     flashMessagesContainer.appendChild(flashMessage);
+
+    setTimeout(() => deleteFlashMessage(flashMessage), 5000);
 }
 
 function deleteFlashMessage(flashMessageElement) {
