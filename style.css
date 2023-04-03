@@ -484,7 +484,7 @@ input[data-valueState="none"] ~ .icon-validation {
     opacity: 0;
 
     background-color: var(--input-color);
-    color: var(--form-background);
+    color: var(--sign-up-background);
     padding: 12px 15px;
     border-radius: 7px;
     width: 100%;
@@ -510,6 +510,7 @@ input[data-valueState="none"] ~ .icon-validation {
 
 .flash-message[data-visibilityState="hide"] {
     animation-name: flashHide;
+    animation-fill-mode: forwards;
     animation-duration: 200ms;
 }
 

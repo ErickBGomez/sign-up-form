@@ -122,7 +122,7 @@ form.addEventListener("submit", e => {
     });
 
     if (validInputs.length === inputs.length) {
-        createFlashMessage("success", "Success!", "You account has been created");
+        createFlashMessage("success", "Success!", "Your account has been created");
     } else {
         createFlashMessage("error", "Error!", "Some fields need to be corrected");
     }
