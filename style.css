@@ -270,7 +270,7 @@ input:placeholder-shown + label {
 
 .input-container > input {
     width: 100%;
-    
+
     position: relative;
     color: var(--text-color);
     font-size: 1rem;
@@ -482,7 +482,7 @@ input[data-valueState="none"] ~ .icon-validation {
     align-items: center;
     gap: 15px;
     opacity: 0;
-    
+
     background-color: var(--input-color);
     color: var(--form-background);
     padding: 12px 15px;
@@ -490,7 +490,7 @@ input[data-valueState="none"] ~ .icon-validation {
     width: 100%;
     max-width: 325px;
 
-    
+
 }
 
 .flash-message[data-messageType="success"] {
@@ -583,7 +583,7 @@ a:focus {
 footer {
     position: absolute;
     bottom: 0px;
-    
+
     background-color: var(--form-background);
     box-shadow: 0px 0px 18px 5px var(--form-shadow);
     color: var(--text-color);
@@ -593,6 +593,7 @@ footer {
     padding: 10px;
 }
 
+/* Debug feature: Auto fill all inputs */
 .experimental > button {
     background-color: var(--valid-accent);
     border: none;
