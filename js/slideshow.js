@@ -10,11 +10,12 @@ function setSlideshowContent(newIndex) {
     });
 
     slideshowImages[currentIndex].dataset.visibilitystate = "show";
+
+    selectIndicator(currentIndex);
 }
 
-function moveSlideshowContent(numDirection = 1) {
-    // 1 -> Forward.      -1 -> Backwards.
-    currentIndex += numDirection;
+function moveForwardSlideshow() {
+    currentIndex++;
 
     if (currentIndex < 0) currentIndex = slideshowImages.length - 1;
     else if (currentIndex > slideshowImages.length - 1) currentIndex = 0;
@@ -22,9 +23,14 @@ function moveSlideshowContent(numDirection = 1) {
     setSlideshowContent(currentIndex);
 }
 
-slideshowIndicators.forEach((indicator, index) => indicator.addEventListener("click", e => {
-    slideshowIndicators.forEach(otherIndicators => otherIndicators.dataset.indicatorstate = "unselected");
-    indicator.dataset.indicatorstate = "selected";
+function selectIndicator(indicatorIndex) {
+    slideshowIndicators.forEach(otherIndicators => {
+        otherIndicators.dataset.indicatorstate = "unselected";
+    });
 
-    setSlideshowContent(index);
-}));
+    slideshowIndicators[indicatorIndex].dataset.indicatorstate = "selected";
+}
+
+slideshowIndicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", e => setSlideshowContent(index));
+});

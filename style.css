@@ -199,7 +199,6 @@ i {
 }
 
 .image-slideshow-indicator {
-    background-color: var(--slideshow-indicator-unselected-white);
     width: 13px;
     height: 13px;
     border-radius: 100%;
@@ -209,6 +208,14 @@ i {
 
 .image-slideshow-indicator[data-indicatorState="selected"] {
     background-color: var(--slideshow-white);
+
+    transition: 500ms;
+}
+
+.image-slideshow-indicator[data-indicatorState="unselected"] {
+    background-color: var(--slideshow-indicator-unselected-white);
+
+    transition: 500ms;
 }
 
 /* Sign up area */
