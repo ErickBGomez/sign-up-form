@@ -1,0 +1,1 @@
+let currentSlideshowValue = 1;
