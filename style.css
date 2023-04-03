@@ -9,8 +9,6 @@
     --slideshow-gradient-background4: linear-gradient(135deg, #26da86, #65dae7);
 
     /* Global variables */
-    --image-slideshow-area: 35%;
-    --sign-up-area: calc(100% - var(--image-slideshow-area));
     --help-dialog-fade: 175ms;
 
     font-size: 16px;
@@ -104,7 +102,7 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: var(--image-slideshow-area);
+    width: 35vw;
     z-index: 1;
 }
 
@@ -186,10 +184,10 @@ i {
 /* Sign up area */
 
 .sign-up-container {
+    flex: 1;
     display: grid;
     grid-template-rows: 1fr auto 1fr;
     position: relative;
-    width: var(--sign-up-area);
     background-color: var(--sign-up-background);
 }
 
