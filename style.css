@@ -137,13 +137,13 @@ i {
 
 .slideshow-content[data-visibilityState="show"] {
     animation-name: slideshowFadeIn;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
 }
 
 .slideshow-content[data-visibilityState="hide"] {
     animation-name: slideshowFadeOut;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
 }
 

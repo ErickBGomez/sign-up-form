@@ -1,4 +1,6 @@
 currentIndex = 0;
+const nextImageMilliseconds = 7000;
+
 const slideshowImages = document.querySelectorAll(".slideshow-content");
 const slideshowIndicators = document.querySelectorAll(".image-slideshow-indicator")
 
@@ -37,3 +39,6 @@ slideshowIndicators.forEach((indicator, index) => {
 
 // Initial slideshow image
 setSlideshowContent(currentIndex);
+
+// change slideshow image every "7 seconds"
+setInterval(moveForwardSlideshow, nextImageMilliseconds);
