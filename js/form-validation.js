@@ -28,6 +28,7 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 const validationDelay = 750;
 
 const flashMessagesContainer = document.querySelector(".flash-messages-container");
+const flashDisappearDelay = 5000;
 
 // Functions
 function setInputState(inputElement, newState, errorMessage = "", displayHelp = false) {
@@ -127,23 +128,6 @@ form.addEventListener("submit", e => {
     }
 });
 
-function displayFlashMessageBox(messageType, messageTitle, messageDescription) {
-    const flashIcon = flashMessage.querySelector(".flash-icon");
-    const flashTitle = flashMessage.querySelector(".flash-title");
-    const flashDescription = flashMessage.querySelector(".flash-description");
-    
-    flashMessage.dataset.messagetype = messageType;
-    if (messageType === "success") flashIcon.innerText = "check_circle";
-    else flashIcon.innerText = "cancel";
-
-    flashTitle.innerText = messageTitle;
-    flashDescription.innerText = messageDescription;
-
-
-
-    flashMessage.dataset.visibilitystate = "show";
-}
-
 function createFlashMessage(messageType, titleString, descriptionString) {
     const flashMessage = document.createElement("div");
     flashMessage.className = "flash-message";
@@ -165,6 +149,7 @@ function createFlashMessage(messageType, titleString, descriptionString) {
     description.className = "flash-description";
     description.innerText = descriptionString;
 
+    // Declare arrow function here to clearTimeout function when user closes the flash message
     const deleteFlashMessageTimeout = () => deleteFlashMessage(flashMessage);
     const closeIcon = document.createElement("div");
     closeIcon.className = "flash-close";
@@ -174,7 +159,6 @@ function createFlashMessage(messageType, titleString, descriptionString) {
         deleteFlashMessage(flashMessage);
     });
     
-
     textContainer.appendChild(title);
     textContainer.appendChild(description);
 
@@ -184,7 +168,7 @@ function createFlashMessage(messageType, titleString, descriptionString) {
 
     flashMessagesContainer.appendChild(flashMessage);
 
-    setTimeout(() => deleteFlashMessage(flashMessage), 5000);
+    setTimeout(() => deleteFlashMessage(flashMessage), flashDisappearDelay);
 }
 
 function deleteFlashMessage(flashMessageElement) {
@@ -211,7 +195,7 @@ confirmPasswordInput.addEventListener("input", e => confirmPassword(validationDe
 
 inputs.forEach(input => input.addEventListener("input", e => setInputState(e.target, "none")));
 
-// Experimental
+// Debug feature: Auto fill all inputs
 const fillInputs = document.querySelector(".experimental > button");
 fillInputs.addEventListener("click", e => {
     firstNameInput.value = "Erick";
