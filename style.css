@@ -6,7 +6,7 @@
     --slideshow-gradient-background1: linear-gradient(135deg, #65dae7, #2463cf);
     --slideshow-gradient-background2: linear-gradient(135deg, #ac3dbb, #c24148);
     --slideshow-gradient-background3: linear-gradient(135deg, #cec651, #26da86);
-    --slideshow-gradient-background4: linear-gradient(135deg, #26da86, #65dae7);
+    --slideshow-gradient-background4: linear-gradient(135deg, #da4126, #658ee7);
 
     /* Global variables */
     --help-dialog-fade: 175ms;
@@ -133,6 +133,36 @@ i {
 
 .slideshow-content.image4 {
     background: var(--slideshow-gradient-background4);
+}
+
+.slideshow-content[data-visibilityState="show"] {
+    animation-name: slideshowFadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.slideshow-content[data-visibilityState="hide"] {
+    animation-name: slideshowFadeOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideshowFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideshowFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .social-background {
