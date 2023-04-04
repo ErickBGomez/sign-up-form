@@ -185,8 +185,6 @@ i {
     width: 10px;
     height: 10px;
     border-radius: 100%;
-
-    cursor: pointer;
 }
 
 .image-slideshow-indicator[data-indicatorState="selected"] {

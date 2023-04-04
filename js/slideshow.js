@@ -33,10 +33,6 @@ function selectIndicator(indicatorIndex = 0) {
     slideshowIndicators[indicatorIndex].dataset.indicatorstate = "selected";
 }
 
-slideshowIndicators.forEach((indicator, index) => {
-    indicator.addEventListener("click", e => setSlideshowContent(index));
-});
-
 // Initial slideshow image
 setSlideshowContent(currentIndex);
 
