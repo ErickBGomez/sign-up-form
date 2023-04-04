@@ -174,16 +174,16 @@ i {
 
 .image-slideshow-indicator-container {
     position: absolute;
-    bottom: 20px;
+    top: 10px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 
 }
 
 .image-slideshow-indicator {
-    width: 13px;
-    height: 13px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
 
     cursor: pointer;
@@ -618,22 +618,29 @@ a:focus {
     box-shadow: 0 0 10px var(--blue-accent);
 }
 
-.footer-link:link,
-.footer-link:visited {
+.footer-link,
+.credits-link {
     font-weight: 600;
 }
 
-footer {
+footer, .images-credits {
     position: absolute;
     bottom: 0px;
 
-    background-color: var(--form-background);
-    box-shadow: 0px 0px 18px 5px var(--form-shadow);
-    color: var(--text-color);
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     width: 100%;
     text-align: center;
-    padding: 10px;
+    padding: 7px;
+}
+
+footer {
+    background-color: var(--form-background);
+    box-shadow: 0px 0px 18px 5px var(--form-shadow);
+}
+
+.images-credits {
+    background-color: var(--slideshow-social-background-black);
+    color: var(--slideshow-white);
 }
 
 /* Debug feature: Auto fill all inputs */
