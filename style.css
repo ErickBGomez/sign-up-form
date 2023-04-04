@@ -51,11 +51,13 @@
     box-sizing: border-box;
 }
 
+/* All elements will have the same background color  */
 *::selection {
     background-color: var(--blue-accent);
     color: var(--form-background);
 }
 
+/* Animation when focusing any element */
 *:focus {
     transition: 100ms;
 }
