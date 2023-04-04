@@ -162,13 +162,15 @@ i {
 .social-title {
     text-align: center;
     color: var(--slideshow-white);
-    font-size: 4.5rem;
+    font-size: clamp(3.2rem, 6vw, 4.5rem);
     user-select: none;
 }
 
 .social-icon {
-    width: 175px;
-    height: 175px;
+    --responsive-icon: clamp(140px, 17vw, 200px);
+
+    width: var(--responsive-icon);
+    height: var(--responsive-icon);
     fill: var(--slideshow-white);
 }
 
@@ -217,11 +219,15 @@ i {
 
 /* Upper area */
 
-.upper-area {
-    font-weight: 300;
-    font-size: 1.3rem;
+.upper-area{
     align-self: end;
     margin-bottom: 45px;
+}
+
+.upper-area > p {
+    max-width: 900px;
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
 }
 
 .upper-area > p:not(:last-child) {
@@ -668,5 +674,5 @@ footer {
 }
 
 @media only screen and (max-width: 960px) {
-    
+
 }
