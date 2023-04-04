@@ -211,8 +211,8 @@ i {
 
 .sign-up-container > div,
 .sign-up-container > form {
-    padding-right: 90px;
-    padding-left: 90px;
+    padding-right: clamp(30px, 5vw, 90px);
+    padding-left: clamp(30px, 5vw, 90px);
 }
 
 /* Upper area */
@@ -286,7 +286,8 @@ i {
     display: grid;
     grid-template-rows: repeat(3, auto);
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 45px 75px;
+    row-gap: 45px;
+    column-gap: clamp(25px, 5vw, 75px);
     max-width: 775px;
 }
 
@@ -652,4 +653,8 @@ footer {
     position: absolute;
     top: 10px;
     left: 50%;
+}
+
+@media only screen and (max-width: 960px) {
+    
 }
