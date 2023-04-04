@@ -620,7 +620,7 @@ input[data-valueState="none"] ~ .icon-validation {
 /* Footer */
 
 a {
-    padding: 0 2px;
+    padding: 2px 0px;
 }
 
 a:link,
@@ -672,8 +672,4 @@ footer {
     position: absolute;
     top: 10px;
     left: 50%;
-}
-
-@media only screen and (max-width: 960px) {
-
 }
