@@ -256,6 +256,7 @@ i {
 
 .theme-text {
     visibility: hidden;
+    font-size: 1.25rem;
     position: absolute;
     display: block;
     width: 125px;
