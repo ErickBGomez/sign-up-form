@@ -346,6 +346,7 @@ input:placeholder-shown + label {
     width: 175px;
     position: absolute;
     top: 20px;
+    right: -50%;
     background-color: var(--help-dialog-box-color);
     color: var(--form-background);
     padding: 6px 12px;
