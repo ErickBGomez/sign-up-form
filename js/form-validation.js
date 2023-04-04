@@ -61,7 +61,7 @@ function countValidInputs(inputElement, inputState) {
 
 // Validations
 function validateInputValue(inputElement, regexPattern = "skip", patternErrorMessage = "Not a valid value", delay = 0) {
-    const delayedValidations = () => {
+    setTimeout(() => {
         // Empty inputs
         if (inputElement.value.length == 0) {
             setInputState(inputElement, "invalid", "Field cannot be empty", false);
@@ -77,10 +77,7 @@ function validateInputValue(inputElement, regexPattern = "skip", patternErrorMes
             }
         }
         // Inputs will keep "none" valueState if they skip regexPattern
-    };
-    
-    clearTimeout(delayedValidations);
-    setTimeout(delayedValidations, delay);
+    }, delay);
 }
 
 function checkRegexPattern(inputValue, regexPattern) {
@@ -92,7 +89,7 @@ function checkRegexPattern(inputValue, regexPattern) {
 }
 
 function confirmPassword(delay = 0) {
-    const delayedConfirm = () => {
+    setTimeout(() => {
         if (!((passwordInput.dataset.valuestate !== "none") && 
             (confirmPasswordInput.dataset.valuestate !== "none" || confirmPasswordInput.value)))
         return;
@@ -106,10 +103,7 @@ function confirmPassword(delay = 0) {
         } else {
             setInputState(confirmPasswordInput, "invalid", "Passwords don't match", false);
         }
-    };
-
-    clearTimeout(delayedConfirm);
-    setTimeout(delayedConfirm, delay);
+    }, delay);
 }
 
 //Events:
@@ -168,7 +162,7 @@ function createFlashMessage(messageType, titleString, descriptionString) {
 
     flashMessagesContainer.appendChild(flashMessage);
 
-    setTimeout(() => deleteFlashMessage(flashMessage), flashDisappearDelay);
+    setTimeout(deleteFlashMessage, flashDisappearDelay, flashMessage);
 }
 
 function deleteFlashMessage(flashMessageElement) {
