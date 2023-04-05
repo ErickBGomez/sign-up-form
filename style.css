@@ -522,7 +522,7 @@ input[data-valueState="none"] ~ .icon-validation {
 
 .terms-of-service {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--terms-and-service-text);
     width: 300px;
 }
