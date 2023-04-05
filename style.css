@@ -387,7 +387,8 @@ input:placeholder-shown + label {
     right: -140px;
 }
 
-.help-validation:hover ~ .help-dialog {
+.help-validation:hover ~ .help-dialog,
+.help-dialog:hover {
     opacity: 1;
     visibility: visible;
 
