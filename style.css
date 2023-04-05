@@ -163,6 +163,13 @@ i {
     width: 100%;
 }
 
+.social-logo {
+    --responsive-icon: clamp(110px, 15vw, 200px);
+
+    width: var(--responsive-icon);
+    height: var(--responsive-icon);
+}
+
 .social-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
@@ -170,14 +177,6 @@ i {
     color: var(--slideshow-white);
     font-size: clamp(2.2rem, 4.8vw, 4rem);
     user-select: none;
-}
-
-.social-icon {
-    --responsive-icon: clamp(140px, 18.5vw, 250px);
-
-    width: var(--responsive-icon);
-    height: var(--responsive-icon);
-    fill: var(--slideshow-white);
 }
 
 .image-slideshow-indicator-container {
