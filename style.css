@@ -230,6 +230,10 @@ i {
     font-size: clamp(1.3rem, 2vw, 1.65rem);
 }
 
+.upper-area strong {
+    font-weight: 500;
+}
+
 .upper-area > p:not(:last-child) {
     margin-bottom: 30px;
 }
