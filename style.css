@@ -3,10 +3,10 @@
     --slideshow-white: #F3F3F3;
     --slideshow-indicator-unselected-white: #f5f5f569;
     --slideshow-social-background-black: #35353591;
-    --slideshow-gradient-background1: linear-gradient(135deg, #65dae7, #2463cf);
-    --slideshow-gradient-background2: linear-gradient(135deg, #ac3dbb, #c24148);
-    --slideshow-gradient-background3: linear-gradient(135deg, #cec651, #26da86);
-    --slideshow-gradient-background4: linear-gradient(135deg, #da4126, #658ee7);
+    --slideshow-gradient-background1: linear-gradient(135deg, #2298a5, #093788);
+    --slideshow-gradient-background2: linear-gradient(135deg, #81258d, #8a2126);
+    --slideshow-gradient-background3: linear-gradient(135deg, #b1aa52, #1a8654);
+    --slideshow-gradient-background4: linear-gradient(135deg, #aa4b3a, #3c5da5);
 
     /* Global variables */
     --help-dialog-fade: 175ms;
