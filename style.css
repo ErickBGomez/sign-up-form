@@ -156,10 +156,10 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 25px;
+    gap: 0px;
     align-items: center;
     background-color: var(--slideshow-social-background-black);
-    padding: 55px 0;
+    padding: 30px 0;
     width: 100%;
 }
 
@@ -168,12 +168,12 @@ i {
     font-weight: 800;
     text-align: center;
     color: var(--slideshow-white);
-    font-size: clamp(3.2rem, 6vw, 4.5rem);
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
     user-select: none;
 }
 
 .social-icon {
-    --responsive-icon: clamp(140px, 17vw, 200px);
+    --responsive-icon: clamp(140px, 18.5vw, 250px);
 
     width: var(--responsive-icon);
     height: var(--responsive-icon);
