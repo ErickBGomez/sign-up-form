@@ -232,12 +232,12 @@ i {
 
 .upper-area > p {
     max-width: 900px;
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(1.3rem, 2vw, 1.65rem);
 }
 
 .upper-area strong {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .upper-area > p:not(:last-child) {
@@ -267,6 +267,7 @@ i {
 .theme-text {
     visibility: hidden;
     font-size: 1.25rem;
+    font-weight: 500;
     position: absolute;
     display: block;
     width: 125px;
@@ -281,9 +282,8 @@ i {
 }
 
 .theme-container:hover > .theme-text {
-    font-weight: 500;
     visibility: visible;
-    left: -130px;
+    left: -120px;
     opacity: 100;
 
     transition: 300ms;
