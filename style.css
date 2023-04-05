@@ -73,6 +73,10 @@ p {
     margin: 0;
 }
 
+input {
+    font-family: inherit;
+}
+
 p,
 input,
 footer {
@@ -312,7 +316,7 @@ i {
 input:placeholder-shown + label {
     position: absolute;
     left: 15px;
-    top: calc(50% - 0.5rem);
+    top: calc(50% - 0.6rem);
     font-size: 1rem;
     color: var(--input-color);
     font-weight: 400;
@@ -347,13 +351,12 @@ input:placeholder-shown + label {
 
 .info-validation {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 400;
 }
 
 .help-validation {
     display: block;
-    top: -1px;
     scale: 0.7;
     cursor: help;
 }
@@ -427,9 +430,9 @@ input:focus {
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    top: 9px;
+    top: 7px;
 }
 
 input:focus + label {
